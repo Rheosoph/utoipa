@@ -9,7 +9,7 @@ keywords = ["swagger-ui", "openapi", "documentation"]
 repository = "https://github.com/juhaku/utoipa"
 categories = ["web-programming"]
 authors = ["Juha Kukkonen <juha7kukkonen@gmail.com>"]
-rust-version.workspace = true
+rust-version = "1.88"
 
 [features]
 default = ["url"]
@@ -29,7 +29,7 @@ rocket = { version = "0.5", features = ["json"], optional = true }
 axum = { version = "0.8.0", default-features = false, features = [
     "json",
 ], optional = true }
-utoipa = { version = "5.0.0", path = "../utoipa", default-features = false, features = [
+utoipa = { version = "5.0.0", default-features = false, features = [
     "macros",
 ] }
 serde = { version = "1.0", features = ["derive", "rc"] }
@@ -37,6 +37,8 @@ serde_json = { version = "1.0" }
 base64 = { version = "0.22.1" }
 
 [dev-dependencies]
+zip = { version = "9.0.5", default-features = false, features = ["deflate"] }
+tempfile = "3"
 http = "1.2"
 similar = "2.5"
 tokio = { version = "1", features = ["macros"] }
@@ -49,7 +51,7 @@ no-default-features = true
 rustdoc-args = ["--cfg", "doc_cfg"]
 
 [build-dependencies]
-zip = { version = "3.0", default-features = false, features = ["deflate"] }
+zip = { version = "9.0.5", default-features = false, features = ["deflate"] }
 regex = "1.7"
 
 # used by cache feature
@@ -63,7 +65,7 @@ reqwest = { version = "0.12", features = [
     "rustls-tls",
 ], default-features = false, optional = true }
 url = { version = "2", optional = true }
-utoipa-swagger-ui-vendored = { version = "0.1", path = "../utoipa-swagger-ui-vendored", optional = true }
+utoipa-swagger-ui-vendored = { version = "0.1", optional = true }
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(doc_cfg)'] }
